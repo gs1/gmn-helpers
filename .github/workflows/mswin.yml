@@ -1,0 +1,31 @@
+name: .NET Core (Windows)
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  ci-mswin:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1
+    - name: MSVC CI
+      working-directory: cs
+      run: dotnet build
+
+    - name: Install dependencies
+      working-directory: cs
+      run: dotnet restore GS1GMN.sln
+    - name: Build
+      working-directory: cs
+      run: dotnet build GMN/GMN.csproj --configuration Release --no-restore
+    - name: Test
+      working-directory: cs
+      run: dotnet test GMNTests/GMNTests.csproj --no-restore --verbosity normal

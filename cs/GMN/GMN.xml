@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GMN</name>
+    </assembly>
+    <members>
+        <member name="T:GS1.GMN">
+             <summary>
+             Helper class that is both a demonstration and usable implementation of a
+             check character pair generator and verifier for a GS1 Global Model
+             Number.
+            
+             Copyright (c) 2019-2021 GS1 AISBL.
+            
+             Licensed under the Apache License, Version 2.0 (the "License");
+             you may not use this file except in compliance with the License.
+            
+             You may obtain a copy of the License at
+            
+                 http://www.apache.org/licenses/LICENSE-2.0
+            
+             Unless required by applicable law or agreed to in writing, software
+             distributed under the License is distributed on an "AS IS" BASIS,
+             WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+             See the License for the specific language governing permissions and
+             limitations under the License.
+            
+             </summary>
+        </member>
+        <member name="F:GS1.GMN.weights">
+            <summary>
+            Descending primes used as multipliers of each data character.
+            </summary>
+        </member>
+        <member name="F:GS1.GMN.cset82">
+            <summary>
+            GS1 AI encodable character set 82. Place in the string represents the character value.
+            </summary>
+        </member>
+        <member name="F:GS1.GMN.cset32">
+            <summary>
+            Subset of the encodable character set used for the check character pair.
+            </summary>
+        </member>
+        <member name="F:GS1.GMN.cset82val">
+            <summary>
+            Character to value map for cset82.
+            </summary>
+        </member>
+        <member name="F:GS1.GMN.cset32val">
+            <summary>
+            Character to value map for cset32.
+            </summary>
+        </member>
+        <member name="M:GS1.GMN.CheckCharacters(System.String)">
+            <summary>
+            Calculates the check character pair for a given partial GMN.
+            </summary>
+            <param name="part">A partial GMN.</param>
+            <returns>Check character pair.</returns>
+            <exception cref="T:GS1.GS1Exception">If the format of the given GMN is invalid.</exception>
+        </member>
+        <member name="M:GS1.GMN.CheckCharactersGcpModel(System.String,System.String)">
+            <summary>
+            Calculates the check character pair for a given partial GMN, provided as GS1 Company Prefix and model reference components.
+            </summary>
+            <param name="gcp">A GS1 Company Prefix.</param>
+            <param name="model">A model reference.</param>
+            <returns>Check character pair.</returns>
+            <exception cref="T:GS1.GS1Exception">If the format of the given GMN is invalid.</exception>
+        </member>
+        <member name="M:GS1.GMN.AddCheckCharacters(System.String)">
+            <summary>
+            Complete a given partial GMN by appending the check character pair.
+            </summary>
+            <param name="part">A partial GMN.</param>
+            <returns>A complete GMN including the check character pair.</returns>
+            <exception cref="T:GS1.GS1Exception">If the format of the given GMN is invalid.</exception>
+        </member>
+        <member name="M:GS1.GMN.AddCheckCharactersGcpModel(System.String,System.String)">
+            <summary>
+            Complete a given partial GMN, provided as GS1 Company Prefix and model reference components, by appending the check character pair.
+            </summary>
+            <param name="gcp">A GS1 Company Prefix.</param>
+            <param name="model">A model reference.</param>
+            <returns>A complete GMN including the check character pair.</returns>
+            <exception cref="T:GS1.GS1Exception">If the format of the given GMN is invalid.</exception>
+        </member>
+        <member name="M:GS1.GMN.VerifyCheckCharacters(System.String)">
+            <summary>
+            Verify that a given GMN has a correct check character pair.
+            </summary>
+            <param name="gmn">A GMN.</param>
+            <returns>True if the GMN is has a valid check character pair. Otherwise false.</returns>
+            <exception cref="T:GS1.GS1Exception">If the format of the given GMN is invalid.</exception>
+        </member>
+        <member name="M:GS1.GMN.VerifyCheckCharactersGcpModelChecks(System.String,System.String,System.String)">
+            <summary>
+            Verify that a given GMN, provided as GS1 Company Prefix, model reference and check character components, has a correct check character pair.
+            </summary>
+            <param name="gcp">A GS1 Company Prefix.</param>
+            <param name="model">A model reference.</param>
+            <param name="checks">A check character pair.</param>
+            <returns>True if the GMN is has a valid check character pair. Otherwise false.</returns>
+            <exception cref="T:GS1.GS1Exception">If the format of the given GMN is invalid.</exception>
+        </member>
+        <member name="M:GS1.GMN.GoodCharacterPositions(System.String,System.Boolean)">
+            <summary>
+            Indicate whether each character in a given GMN belongs to the appropriate character set for the character position.
+            </summary>
+            <param name="gmn">A GMN.</param>
+            <param name="complete">true if a GMN is being provided complete with a check character pair. Otherwise false.</param>
+            <returns>a boolean array matching each input character: true if the character belongs to the appropriate set. Otherwise false.</returns>
+        </member>
+        <member name="M:GS1.GMN.GoodCharacterPositionsGcpModelChecks(System.String,System.String,System.String)">
+            <summary>
+            Indicate whether each character in a given GMN, provided as GS1 Company Prefix, model reference and check character components, belongs to the appropriate character set for the character position.
+            </summary>
+            <param name="gcp">A GS1 Company Prefix.</param>
+            <param name="model">A model reference.</param>
+            <param name="checks">A check character pair.</param>
+            <returns>a boolean array matching each input character: true if the character belongs to the appropriate set. Otherwise false.</returns>
+        </member>
+        <member name="M:GS1.GMN.GoodCharacterPositionsGcpModel(System.String,System.String)">
+            <summary>
+            Indicate whether each character in a given GMN, provided as GS1 Company Prefix and model reference components, belongs to the appropriate character set for the character position.
+            </summary>
+            <param name="gcp">A GS1 Company Prefix.</param>
+            <param name="model">A model reference.</param>
+            <returns>a boolean array matching each input character: true if the character belongs to the appropriate set. Otherwise false.</returns>
+        </member>
+        <member name="T:GS1.GS1Exception">
+            <summary>
+            A custom exception class to differentiate exceptions raised by the utility
+            class from other sources of error.
+            </summary>
+        </member>
+        <member name="M:GS1.GS1Exception.#ctor(System.String)">
+            <summary>
+            Error constructor.
+            </summary>
+            <param name="message">
+            Description of the error.
+            </param>
+        </member>
+    </members>
+</doc>

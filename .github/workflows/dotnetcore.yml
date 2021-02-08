@@ -1,0 +1,35 @@
+name: .NET Core (Linux)
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: |
+        cd cs
+        dotnet restore GS1GMN.sln
+    - name: Build
+      run: |
+        cd cs
+        dotnet build GMN/GMN.csproj --configuration Release --no-restore
+    - name: Test
+      run: |
+        cd cs
+        dotnet test GMNTests/GMNTests.csproj --no-restore --verbosity normal
+    - uses: nikeee/docfx-action@master
+      name: Generate docfx documentation
+      with:
+        args: cs/docfx_project/docfx.json

@@ -1,0 +1,635 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class GMN
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class GMN
+   ">
+    <meta name="generator" content="docfx ">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GS1.GMN">
+  
+  
+  <h1 id="GS1_GMN" data-uid="GS1.GMN" class="text-break">Class GMN
+  </h1>
+  <div class="markdown level0 summary"><p>Helper class that is both a demonstration and usable implementation of a
+check character pair generator and verifier for a GS1 Global Model
+Number.</p>
+<p>Copyright (c) 2019-2021 GS1 AISBL.</p>
+<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.</p>
+<p>You may obtain a copy of the License at</p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">GMN</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GS1.html">GS1</a></h6>
+  <h6><strong>Assembly</strong>: GMN.dll</h6>
+  <h5 id="GS1_GMN_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class GMN : object</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="GS1_GMN_AddCheckCharacters_" data-uid="GS1.GMN.AddCheckCharacters*"></a>
+  <h4 id="GS1_GMN_AddCheckCharacters_System_String_" data-uid="GS1.GMN.AddCheckCharacters(System.String)">AddCheckCharacters(String)</h4>
+  <div class="markdown level1 summary"><p>Complete a given partial GMN by appending the check character pair.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string AddCheckCharacters(string part)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">part</span></td>
+        <td><p>A partial GMN.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>A complete GMN including the check character pair.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GS1.GS1Exception.html">GS1Exception</a></td>
+        <td><p>If the format of the given GMN is invalid.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GS1_GMN_AddCheckCharactersGcpModel_" data-uid="GS1.GMN.AddCheckCharactersGcpModel*"></a>
+  <h4 id="GS1_GMN_AddCheckCharactersGcpModel_System_String_System_String_" data-uid="GS1.GMN.AddCheckCharactersGcpModel(System.String,System.String)">AddCheckCharactersGcpModel(String, String)</h4>
+  <div class="markdown level1 summary"><p>Complete a given partial GMN, provided as GS1 Company Prefix and model reference components, by appending the check character pair.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string AddCheckCharactersGcpModel(string gcp, string model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">gcp</span></td>
+        <td><p>A GS1 Company Prefix.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>A model reference.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>A complete GMN including the check character pair.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GS1.GS1Exception.html">GS1Exception</a></td>
+        <td><p>If the format of the given GMN is invalid.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GS1_GMN_CheckCharacters_" data-uid="GS1.GMN.CheckCharacters*"></a>
+  <h4 id="GS1_GMN_CheckCharacters_System_String_" data-uid="GS1.GMN.CheckCharacters(System.String)">CheckCharacters(String)</h4>
+  <div class="markdown level1 summary"><p>Calculates the check character pair for a given partial GMN.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string CheckCharacters(string part)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">part</span></td>
+        <td><p>A partial GMN.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Check character pair.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GS1.GS1Exception.html">GS1Exception</a></td>
+        <td><p>If the format of the given GMN is invalid.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GS1_GMN_CheckCharactersGcpModel_" data-uid="GS1.GMN.CheckCharactersGcpModel*"></a>
+  <h4 id="GS1_GMN_CheckCharactersGcpModel_System_String_System_String_" data-uid="GS1.GMN.CheckCharactersGcpModel(System.String,System.String)">CheckCharactersGcpModel(String, String)</h4>
+  <div class="markdown level1 summary"><p>Calculates the check character pair for a given partial GMN, provided as GS1 Company Prefix and model reference components.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string CheckCharactersGcpModel(string gcp, string model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">gcp</span></td>
+        <td><p>A GS1 Company Prefix.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>A model reference.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Check character pair.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GS1.GS1Exception.html">GS1Exception</a></td>
+        <td><p>If the format of the given GMN is invalid.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GS1_GMN_GoodCharacterPositions_" data-uid="GS1.GMN.GoodCharacterPositions*"></a>
+  <h4 id="GS1_GMN_GoodCharacterPositions_System_String_System_Boolean_" data-uid="GS1.GMN.GoodCharacterPositions(System.String,System.Boolean)">GoodCharacterPositions(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Indicate whether each character in a given GMN belongs to the appropriate character set for the character position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool[] GoodCharacterPositions(string gmn, bool complete)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">gmn</span></td>
+        <td><p>A GMN.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">complete</span></td>
+        <td><p>true if a GMN is being provided complete with a check character pair. Otherwise false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span>[]</td>
+        <td><p>a boolean array matching each input character: true if the character belongs to the appropriate set. Otherwise false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GS1_GMN_GoodCharacterPositionsGcpModel_" data-uid="GS1.GMN.GoodCharacterPositionsGcpModel*"></a>
+  <h4 id="GS1_GMN_GoodCharacterPositionsGcpModel_System_String_System_String_" data-uid="GS1.GMN.GoodCharacterPositionsGcpModel(System.String,System.String)">GoodCharacterPositionsGcpModel(String, String)</h4>
+  <div class="markdown level1 summary"><p>Indicate whether each character in a given GMN, provided as GS1 Company Prefix and model reference components, belongs to the appropriate character set for the character position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool[] GoodCharacterPositionsGcpModel(string gcp, string model)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">gcp</span></td>
+        <td><p>A GS1 Company Prefix.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>A model reference.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span>[]</td>
+        <td><p>a boolean array matching each input character: true if the character belongs to the appropriate set. Otherwise false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GS1_GMN_GoodCharacterPositionsGcpModelChecks_" data-uid="GS1.GMN.GoodCharacterPositionsGcpModelChecks*"></a>
+  <h4 id="GS1_GMN_GoodCharacterPositionsGcpModelChecks_System_String_System_String_System_String_" data-uid="GS1.GMN.GoodCharacterPositionsGcpModelChecks(System.String,System.String,System.String)">GoodCharacterPositionsGcpModelChecks(String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Indicate whether each character in a given GMN, provided as GS1 Company Prefix, model reference and check character components, belongs to the appropriate character set for the character position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool[] GoodCharacterPositionsGcpModelChecks(string gcp, string model, string checks)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">gcp</span></td>
+        <td><p>A GS1 Company Prefix.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>A model reference.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">checks</span></td>
+        <td><p>A check character pair.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span>[]</td>
+        <td><p>a boolean array matching each input character: true if the character belongs to the appropriate set. Otherwise false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GS1_GMN_VerifyCheckCharacters_" data-uid="GS1.GMN.VerifyCheckCharacters*"></a>
+  <h4 id="GS1_GMN_VerifyCheckCharacters_System_String_" data-uid="GS1.GMN.VerifyCheckCharacters(System.String)">VerifyCheckCharacters(String)</h4>
+  <div class="markdown level1 summary"><p>Verify that a given GMN has a correct check character pair.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool VerifyCheckCharacters(string gmn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">gmn</span></td>
+        <td><p>A GMN.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if the GMN is has a valid check character pair. Otherwise false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GS1.GS1Exception.html">GS1Exception</a></td>
+        <td><p>If the format of the given GMN is invalid.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GS1_GMN_VerifyCheckCharactersGcpModelChecks_" data-uid="GS1.GMN.VerifyCheckCharactersGcpModelChecks*"></a>
+  <h4 id="GS1_GMN_VerifyCheckCharactersGcpModelChecks_System_String_System_String_System_String_" data-uid="GS1.GMN.VerifyCheckCharactersGcpModelChecks(System.String,System.String,System.String)">VerifyCheckCharactersGcpModelChecks(String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Verify that a given GMN, provided as GS1 Company Prefix, model reference and check character components, has a correct check character pair.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool VerifyCheckCharactersGcpModelChecks(string gcp, string model, string checks)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">gcp</span></td>
+        <td><p>A GS1 Company Prefix.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>A model reference.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">checks</span></td>
+        <td><p>A check character pair.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if the GMN is has a valid check character pair. Otherwise false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GS1.GS1Exception.html">GS1Exception</a></td>
+        <td><p>If the format of the given GMN is invalid.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

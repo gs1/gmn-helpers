@@ -1,0 +1,35 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "*.csproj"
+          ],
+          "src": "../GMN"
+        }
+      ],
+      "dest": "."
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**.yml"
+        ]
+      }
+    ],
+    "dest": "../docs",
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "globalMetadata": {
+      "_disableNavbar": true,
+      "_disableContribution": true,
+      "_docfxVersion": ""
+    },
+    "template": [
+      "default"
+    ]
+  }
+}
