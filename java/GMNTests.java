@@ -172,7 +172,6 @@ public class GMNTests
             assertTrue(verifyCheckCharacters("23956qk1&dB!23"));
             assertTrue(verifyCheckCharacters("794394895ic045"));
             assertTrue(verifyCheckCharacters("57453Uq3qA<H67"));
-            assertTrue(verifyCheckCharacters("62185314IvwmYZ"));
             assertTrue(verifyCheckCharacters("0881063PhHvY89"));
         }
 

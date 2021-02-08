@@ -119,7 +119,6 @@ test('verifyCheckCharacters_AllCSET32', () => {
   expect(GMN.verifyCheckCharacters("23956qk1&dB!23")).toBe(true);
   expect(GMN.verifyCheckCharacters("794394895ic045")).toBe(true);
   expect(GMN.verifyCheckCharacters("57453Uq3qA<H67")).toBe(true);
-  expect(GMN.verifyCheckCharacters("62185314IvwmYZ")).toBe(true);
   expect(GMN.verifyCheckCharacters("0881063PhHvY89")).toBe(true);
 });
 

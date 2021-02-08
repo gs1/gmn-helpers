@@ -182,7 +182,6 @@ namespace GMNTests
             Assert.True(VerifyCheckCharacters("23956qk1&dB!23"));
             Assert.True(VerifyCheckCharacters("794394895ic045"));
             Assert.True(VerifyCheckCharacters("57453Uq3qA<H67"));
-            Assert.True(VerifyCheckCharacters("62185314IvwmYZ"));
             Assert.True(VerifyCheckCharacters("0881063PhHvY89"));
         }
 
