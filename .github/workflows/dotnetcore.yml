@@ -2,9 +2,13 @@ name: .NET Core (Linux)
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
+    paths:
+      - "cs/**"
   pull_request:
-    branches: [ master ]
+    branches: [master]
+    paths:
+      - "cs/**"
 
 jobs:
   build:
