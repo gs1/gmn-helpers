@@ -109,3 +109,24 @@ The initial libraries and tests were written (under the commission of GS1 AISBL)
 by one of the experts in the technical group that selected the algorithm based
 on its performance during the analysis of several alternative schemes under
 consideration.
+
+Installation
+------------
+
+Using Maven
+```xml
+<dependencies>
+ <dependency>
+    <groupId>org.gs1</groupId>
+    <artifactId>GMN</artifactId>
+    <version>1.0</version>
+  </dependency>
+</dependencies>
+```
+
+Using Gradle
+```kotlin
+dependencies {
+    implementation("org.gs1:GMN:1.0")
+}
+```
