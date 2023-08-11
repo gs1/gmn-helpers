@@ -13,6 +13,10 @@ on:
     paths:
       - "js/**"
 
+defaults:
+  run:
+    working-directory: js
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,13 +33,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Build
         run: |
-          cd js
           npm install
       - name: Test
         run: |
-          cd js
           npm test
       - name: Lint
         run: |
-          cd js
           npm run lint
