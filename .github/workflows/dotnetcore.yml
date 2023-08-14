@@ -21,21 +21,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+
+      - uses: actions/checkout@v3
+
       - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 3.1.101
+
       - name: Install dependencies
         run: |
           dotnet restore GS1GMN.sln
+
       - name: Build
         run: |
           dotnet build GMN/GMN.csproj --configuration Release --no-restore
+
       - name: Test
         run: |
           dotnet test GMNTests/GMNTests.csproj --no-restore --verbosity normal
+
       - uses: nikeee/docfx-action@master
         name: Generate docfx documentation
         with:
           args: cs/docfx_project/docfx.json
+

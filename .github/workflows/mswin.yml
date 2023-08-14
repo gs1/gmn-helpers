@@ -21,15 +21,19 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1
+
       - name: MSVC CI
         run: dotnet build
 
       - name: Install dependencies
         run: dotnet restore GS1GMN.sln
+
       - name: Build
         run: dotnet build GMN/GMN.csproj --configuration Release --no-restore
+
       - name: Test
         run: dotnet test GMNTests/GMNTests.csproj --no-restore --verbosity normal
