@@ -36,4 +36,4 @@ jobs:
       - uses: nikeee/docfx-action@master
         name: Generate docfx documentation
         with:
-          args: docfx_project/docfx.json
+          args: cs/docfx_project/docfx.json
