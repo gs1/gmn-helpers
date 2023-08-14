@@ -5,10 +5,12 @@ on:
     branches: [master]
     paths:
       - "cs/**"
+      - ".github/**"
   pull_request:
     branches: [master]
     paths:
       - "cs/**"
+      - ".github/**"
 
 defaults:
   run:

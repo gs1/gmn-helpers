@@ -8,10 +8,12 @@ on:
     branches: [master]
     paths:
       - "js/**"
+      - ".github/**"
   pull_request:
     branches: [master]
     paths:
       - "js/**"
+      - ".github/**"
 
 defaults:
   run:
