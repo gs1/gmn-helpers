@@ -4,6 +4,8 @@ GMN JavaScript Helper Library
 This contains an official JavaScript helper library provided by GS1 for check
 character pair generation and verification of a Global Model Number (GMN).
 
+It is compatible with all modern web browsers and Node.js 18 or later.
+
 
 Artifacts
 ---------
@@ -53,7 +55,6 @@ Running the example Node.js application
 
 From this directory:
 
-    npm install readline-sync
     node exampleuser.node.js
 
 When the example application is run without command line arguments it will
