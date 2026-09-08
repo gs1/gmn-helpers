@@ -14,11 +14,14 @@ references:
   fullName: GS1.GMN
   nameWithType: GMN
 - uid: GS1.GMN.AddCheckCharacters(System.String)
-  name: AddCheckCharacters(String)
+  name: AddCheckCharacters(string)
   href: GS1.GMN.html#GS1_GMN_AddCheckCharacters_System_String_
   commentId: M:GS1.GMN.AddCheckCharacters(System.String)
-  fullName: GS1.GMN.AddCheckCharacters(System.String)
-  nameWithType: GMN.AddCheckCharacters(String)
+  name.vb: AddCheckCharacters(String)
+  fullName: GS1.GMN.AddCheckCharacters(string)
+  fullName.vb: GS1.GMN.AddCheckCharacters(String)
+  nameWithType: GMN.AddCheckCharacters(string)
+  nameWithType.vb: GMN.AddCheckCharacters(String)
 - uid: GS1.GMN.AddCheckCharacters*
   name: AddCheckCharacters
   href: GS1.GMN.html#GS1_GMN_AddCheckCharacters_
@@ -27,11 +30,14 @@ references:
   fullName: GS1.GMN.AddCheckCharacters
   nameWithType: GMN.AddCheckCharacters
 - uid: GS1.GMN.AddCheckCharactersGcpModel(System.String,System.String)
-  name: AddCheckCharactersGcpModel(String, String)
+  name: AddCheckCharactersGcpModel(string, string)
   href: GS1.GMN.html#GS1_GMN_AddCheckCharactersGcpModel_System_String_System_String_
   commentId: M:GS1.GMN.AddCheckCharactersGcpModel(System.String,System.String)
-  fullName: GS1.GMN.AddCheckCharactersGcpModel(System.String, System.String)
-  nameWithType: GMN.AddCheckCharactersGcpModel(String, String)
+  name.vb: AddCheckCharactersGcpModel(String, String)
+  fullName: GS1.GMN.AddCheckCharactersGcpModel(string, string)
+  fullName.vb: GS1.GMN.AddCheckCharactersGcpModel(String, String)
+  nameWithType: GMN.AddCheckCharactersGcpModel(string, string)
+  nameWithType.vb: GMN.AddCheckCharactersGcpModel(String, String)
 - uid: GS1.GMN.AddCheckCharactersGcpModel*
   name: AddCheckCharactersGcpModel
   href: GS1.GMN.html#GS1_GMN_AddCheckCharactersGcpModel_
@@ -40,11 +46,14 @@ references:
   fullName: GS1.GMN.AddCheckCharactersGcpModel
   nameWithType: GMN.AddCheckCharactersGcpModel
 - uid: GS1.GMN.CheckCharacters(System.String)
-  name: CheckCharacters(String)
+  name: CheckCharacters(string)
   href: GS1.GMN.html#GS1_GMN_CheckCharacters_System_String_
   commentId: M:GS1.GMN.CheckCharacters(System.String)
-  fullName: GS1.GMN.CheckCharacters(System.String)
-  nameWithType: GMN.CheckCharacters(String)
+  name.vb: CheckCharacters(String)
+  fullName: GS1.GMN.CheckCharacters(string)
+  fullName.vb: GS1.GMN.CheckCharacters(String)
+  nameWithType: GMN.CheckCharacters(string)
+  nameWithType.vb: GMN.CheckCharacters(String)
 - uid: GS1.GMN.CheckCharacters*
   name: CheckCharacters
   href: GS1.GMN.html#GS1_GMN_CheckCharacters_
@@ -53,11 +62,14 @@ references:
   fullName: GS1.GMN.CheckCharacters
   nameWithType: GMN.CheckCharacters
 - uid: GS1.GMN.CheckCharactersGcpModel(System.String,System.String)
-  name: CheckCharactersGcpModel(String, String)
+  name: CheckCharactersGcpModel(string, string)
   href: GS1.GMN.html#GS1_GMN_CheckCharactersGcpModel_System_String_System_String_
   commentId: M:GS1.GMN.CheckCharactersGcpModel(System.String,System.String)
-  fullName: GS1.GMN.CheckCharactersGcpModel(System.String, System.String)
-  nameWithType: GMN.CheckCharactersGcpModel(String, String)
+  name.vb: CheckCharactersGcpModel(String, String)
+  fullName: GS1.GMN.CheckCharactersGcpModel(string, string)
+  fullName.vb: GS1.GMN.CheckCharactersGcpModel(String, String)
+  nameWithType: GMN.CheckCharactersGcpModel(string, string)
+  nameWithType.vb: GMN.CheckCharactersGcpModel(String, String)
 - uid: GS1.GMN.CheckCharactersGcpModel*
   name: CheckCharactersGcpModel
   href: GS1.GMN.html#GS1_GMN_CheckCharactersGcpModel_
@@ -66,11 +78,14 @@ references:
   fullName: GS1.GMN.CheckCharactersGcpModel
   nameWithType: GMN.CheckCharactersGcpModel
 - uid: GS1.GMN.GoodCharacterPositions(System.String,System.Boolean)
-  name: GoodCharacterPositions(String, Boolean)
+  name: GoodCharacterPositions(string, bool)
   href: GS1.GMN.html#GS1_GMN_GoodCharacterPositions_System_String_System_Boolean_
   commentId: M:GS1.GMN.GoodCharacterPositions(System.String,System.Boolean)
-  fullName: GS1.GMN.GoodCharacterPositions(System.String, System.Boolean)
-  nameWithType: GMN.GoodCharacterPositions(String, Boolean)
+  name.vb: GoodCharacterPositions(String, Boolean)
+  fullName: GS1.GMN.GoodCharacterPositions(string, bool)
+  fullName.vb: GS1.GMN.GoodCharacterPositions(String, Boolean)
+  nameWithType: GMN.GoodCharacterPositions(string, bool)
+  nameWithType.vb: GMN.GoodCharacterPositions(String, Boolean)
 - uid: GS1.GMN.GoodCharacterPositions*
   name: GoodCharacterPositions
   href: GS1.GMN.html#GS1_GMN_GoodCharacterPositions_
@@ -79,11 +94,14 @@ references:
   fullName: GS1.GMN.GoodCharacterPositions
   nameWithType: GMN.GoodCharacterPositions
 - uid: GS1.GMN.GoodCharacterPositionsGcpModel(System.String,System.String)
-  name: GoodCharacterPositionsGcpModel(String, String)
+  name: GoodCharacterPositionsGcpModel(string, string)
   href: GS1.GMN.html#GS1_GMN_GoodCharacterPositionsGcpModel_System_String_System_String_
   commentId: M:GS1.GMN.GoodCharacterPositionsGcpModel(System.String,System.String)
-  fullName: GS1.GMN.GoodCharacterPositionsGcpModel(System.String, System.String)
-  nameWithType: GMN.GoodCharacterPositionsGcpModel(String, String)
+  name.vb: GoodCharacterPositionsGcpModel(String, String)
+  fullName: GS1.GMN.GoodCharacterPositionsGcpModel(string, string)
+  fullName.vb: GS1.GMN.GoodCharacterPositionsGcpModel(String, String)
+  nameWithType: GMN.GoodCharacterPositionsGcpModel(string, string)
+  nameWithType.vb: GMN.GoodCharacterPositionsGcpModel(String, String)
 - uid: GS1.GMN.GoodCharacterPositionsGcpModel*
   name: GoodCharacterPositionsGcpModel
   href: GS1.GMN.html#GS1_GMN_GoodCharacterPositionsGcpModel_
@@ -92,11 +110,14 @@ references:
   fullName: GS1.GMN.GoodCharacterPositionsGcpModel
   nameWithType: GMN.GoodCharacterPositionsGcpModel
 - uid: GS1.GMN.GoodCharacterPositionsGcpModelChecks(System.String,System.String,System.String)
-  name: GoodCharacterPositionsGcpModelChecks(String, String, String)
+  name: GoodCharacterPositionsGcpModelChecks(string, string, string)
   href: GS1.GMN.html#GS1_GMN_GoodCharacterPositionsGcpModelChecks_System_String_System_String_System_String_
   commentId: M:GS1.GMN.GoodCharacterPositionsGcpModelChecks(System.String,System.String,System.String)
-  fullName: GS1.GMN.GoodCharacterPositionsGcpModelChecks(System.String, System.String, System.String)
-  nameWithType: GMN.GoodCharacterPositionsGcpModelChecks(String, String, String)
+  name.vb: GoodCharacterPositionsGcpModelChecks(String, String, String)
+  fullName: GS1.GMN.GoodCharacterPositionsGcpModelChecks(string, string, string)
+  fullName.vb: GS1.GMN.GoodCharacterPositionsGcpModelChecks(String, String, String)
+  nameWithType: GMN.GoodCharacterPositionsGcpModelChecks(string, string, string)
+  nameWithType.vb: GMN.GoodCharacterPositionsGcpModelChecks(String, String, String)
 - uid: GS1.GMN.GoodCharacterPositionsGcpModelChecks*
   name: GoodCharacterPositionsGcpModelChecks
   href: GS1.GMN.html#GS1_GMN_GoodCharacterPositionsGcpModelChecks_
@@ -105,11 +126,14 @@ references:
   fullName: GS1.GMN.GoodCharacterPositionsGcpModelChecks
   nameWithType: GMN.GoodCharacterPositionsGcpModelChecks
 - uid: GS1.GMN.VerifyCheckCharacters(System.String)
-  name: VerifyCheckCharacters(String)
+  name: VerifyCheckCharacters(string)
   href: GS1.GMN.html#GS1_GMN_VerifyCheckCharacters_System_String_
   commentId: M:GS1.GMN.VerifyCheckCharacters(System.String)
-  fullName: GS1.GMN.VerifyCheckCharacters(System.String)
-  nameWithType: GMN.VerifyCheckCharacters(String)
+  name.vb: VerifyCheckCharacters(String)
+  fullName: GS1.GMN.VerifyCheckCharacters(string)
+  fullName.vb: GS1.GMN.VerifyCheckCharacters(String)
+  nameWithType: GMN.VerifyCheckCharacters(string)
+  nameWithType.vb: GMN.VerifyCheckCharacters(String)
 - uid: GS1.GMN.VerifyCheckCharacters*
   name: VerifyCheckCharacters
   href: GS1.GMN.html#GS1_GMN_VerifyCheckCharacters_
@@ -118,11 +142,14 @@ references:
   fullName: GS1.GMN.VerifyCheckCharacters
   nameWithType: GMN.VerifyCheckCharacters
 - uid: GS1.GMN.VerifyCheckCharactersGcpModelChecks(System.String,System.String,System.String)
-  name: VerifyCheckCharactersGcpModelChecks(String, String, String)
+  name: VerifyCheckCharactersGcpModelChecks(string, string, string)
   href: GS1.GMN.html#GS1_GMN_VerifyCheckCharactersGcpModelChecks_System_String_System_String_System_String_
   commentId: M:GS1.GMN.VerifyCheckCharactersGcpModelChecks(System.String,System.String,System.String)
-  fullName: GS1.GMN.VerifyCheckCharactersGcpModelChecks(System.String, System.String, System.String)
-  nameWithType: GMN.VerifyCheckCharactersGcpModelChecks(String, String, String)
+  name.vb: VerifyCheckCharactersGcpModelChecks(String, String, String)
+  fullName: GS1.GMN.VerifyCheckCharactersGcpModelChecks(string, string, string)
+  fullName.vb: GS1.GMN.VerifyCheckCharactersGcpModelChecks(String, String, String)
+  nameWithType: GMN.VerifyCheckCharactersGcpModelChecks(string, string, string)
+  nameWithType.vb: GMN.VerifyCheckCharactersGcpModelChecks(String, String, String)
 - uid: GS1.GMN.VerifyCheckCharactersGcpModelChecks*
   name: VerifyCheckCharactersGcpModelChecks
   href: GS1.GMN.html#GS1_GMN_VerifyCheckCharactersGcpModelChecks_
@@ -137,15 +164,21 @@ references:
   fullName: GS1.GS1Exception
   nameWithType: GS1Exception
 - uid: GS1.GS1Exception.#ctor(System.String)
-  name: GS1Exception(String)
+  name: GS1Exception(string)
   href: GS1.GS1Exception.html#GS1_GS1Exception__ctor_System_String_
   commentId: M:GS1.GS1Exception.#ctor(System.String)
-  fullName: GS1.GS1Exception.GS1Exception(System.String)
-  nameWithType: GS1Exception.GS1Exception(String)
+  name.vb: New(String)
+  fullName: GS1.GS1Exception.GS1Exception(string)
+  fullName.vb: GS1.GS1Exception.New(String)
+  nameWithType: GS1Exception.GS1Exception(string)
+  nameWithType.vb: GS1Exception.New(String)
 - uid: GS1.GS1Exception.#ctor*
   name: GS1Exception
   href: GS1.GS1Exception.html#GS1_GS1Exception__ctor_
   commentId: Overload:GS1.GS1Exception.#ctor
   isSpec: "True"
+  name.vb: New
   fullName: GS1.GS1Exception.GS1Exception
+  fullName.vb: GS1.GS1Exception.New
   nameWithType: GS1Exception.GS1Exception
+  nameWithType.vb: GS1Exception.New
