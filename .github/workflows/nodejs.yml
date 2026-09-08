@@ -25,7 +25,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [18.x, 20.x, 22.x, 24.x]
 
     steps:
       - uses: actions/checkout@v7
@@ -42,6 +42,23 @@ jobs:
       - name: Test
         run: |
           npm test
+
+  # ESLint requires a newer Node.js than the library itself, so linting runs
+  # once on a current release rather than across the test matrix.
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Use Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24.x
+
+      - name: Build
+        run: |
+          npm install
 
       - name: Lint
         run: |
