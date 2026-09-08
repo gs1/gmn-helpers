@@ -22,12 +22,12 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
 
       - name: Setup .NET Core
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v6
         with:
-          dotnet-version: 3.1.101
+          dotnet-version: 8.0.x
 
       - name: Install dependencies
         run: |
@@ -41,8 +41,8 @@ jobs:
         run: |
           dotnet test GMNTests/GMNTests.csproj --no-restore --verbosity normal
 
-      - uses: nikeee/docfx-action@master
-        name: Generate docfx documentation
-        with:
-          args: cs/docfx_project/docfx.json
+      - name: Generate docfx documentation
+        run: |
+          dotnet tool install -g docfx
+          $HOME/.dotnet/tools/docfx docfx_project/docfx.json
 
