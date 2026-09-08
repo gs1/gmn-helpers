@@ -1,0 +1,49 @@
+version: 2
+
+updates:
+
+  - package-ecosystem: npm
+    directory: /js
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: js
+    groups:
+      js:
+        patterns:
+          - "*"
+
+  - package-ecosystem: maven
+    directory: /java
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: java
+    groups:
+      java:
+        patterns:
+          - "*"
+
+  - package-ecosystem: nuget
+    directories:
+      - /cs/GMNTests
+      - /cs/docfx_project
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: cs
+    groups:
+      cs:
+        patterns:
+          - "*"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: ci
+    groups:
+      actions:
+        patterns:
+          - "*"
