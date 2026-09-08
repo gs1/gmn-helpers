@@ -41,7 +41,7 @@ jobs:
         run: |
           dotnet test GMNTests/GMNTests.csproj --no-restore --verbosity normal
 
-      - uses: nikeee/docfx-action@master
+      - uses: nikeee/docfx-action@90002010a3a91d103f0a813a9208960b7f217353 # master as of 2026-09-08
         name: Generate docfx documentation
         with:
           args: cs/docfx_project/docfx.json
