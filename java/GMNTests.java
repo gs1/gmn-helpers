@@ -339,15 +339,229 @@ public class GMNTests
         }
 
         @Test
+        public void verifyCheckCharacters_DataCharacterSubstituted() throws Exception
+        {
+            assertFalse(verifyCheckCharacters("1987654Ad4X4bL5ttr2310d2K"));
+        }
+
+        @Test
+        public void verifyCheckCharacters_DataCharactersTransposed() throws Exception
+        {
+            assertFalse(verifyCheckCharacters("1987654Ad4X4bL5ttr2301c2K"));
+        }
+
+        @Test
+        public void checkCharactersGcpModel_GcpTooLong()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> checkCharactersGcpModel("1234567890123","Ad4X4bL5"));
+            assertTrue(e.getMessage().toLowerCase().contains("gs1 company prefix is too long"));
+        }
+
+        @Test
+        public void checkCharactersGcpModel_GcpNotNumeric()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> checkCharactersGcpModel("198765A","Ad4X4bL5ttr2310c"));
+            assertTrue(e.getMessage().toLowerCase().contains("gs1 company prefix must only contain digits"));
+        }
+
+        @Test
+        public void checkCharactersGcpModel_ModelEmpty()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> checkCharactersGcpModel("1987654",""));
+            assertTrue(e.getMessage().toLowerCase().contains("model reference must contain at least one character"));
+        }
+
+        @Test
+        public void checkCharactersGcpModel_InvalidCharacterAtEndModel()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> checkCharactersGcpModel("1987654","Ad4X4bL5ttr2310\u00a3"));
+            assertTrue(e.getMessage().toLowerCase().contains("invalid character"));
+        }
+
+        @Test
+        public void checkCharactersGcpModel_TooLong()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> checkCharactersGcpModel("12345","678901234567890123X"));
+            assertTrue(e.getMessage().toLowerCase().contains("input is too long"));
+        }
+
+        @Test
+        public void addCheckCharactersGcpModel_GcpTooLong()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> addCheckCharactersGcpModel("1234567890123","Ad4X4bL5"));
+            assertTrue(e.getMessage().toLowerCase().contains("gs1 company prefix is too long"));
+        }
+
+        @Test
+        public void addCheckCharactersGcpModel_InvalidCharacterAtEndModel()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> addCheckCharactersGcpModel("1987654","Ad4X4bL5ttr2310\u00a3"));
+            assertTrue(e.getMessage().toLowerCase().contains("invalid character"));
+        }
+
+        @Test
+        public void goodCharacterPositions_UsingExampleFromGenSpecs()
+        {
+            assertArrayEquals(mask("1111111111111111111111111"), goodCharacterPositions("1987654Ad4X4bL5ttr2310c2K",true));
+        }
+
+        @Test
+        public void goodCharacterPositions_PartialUsingExampleFromGenSpecs()
+        {
+            assertArrayEquals(mask("11111111111111111111111"), goodCharacterPositions("1987654Ad4X4bL5ttr2310c",false));
+        }
+
+        @Test
+        public void goodCharacterPositions_InvalidCharacters()
+        {
+            assertArrayEquals(mask("1111011111111111111111010"), goodCharacterPositions("1987X54Ad4X4bL5ttr2310\u00a32x",true));
+        }
+
+        @Test
+        public void goodCharacterPositions_PartialHasNoCheckCharacters()
+        {
+            assertArrayEquals(mask("1111111"), goodCharacterPositions("12345Ax",false));
+        }
+
+        @Test
+        public void goodCharacterPositions_CompleteHasCheckCharacters()
+        {
+            assertArrayEquals(mask("1111110"), goodCharacterPositions("12345Ax",true));
+        }
+
+        @Test
+        public void goodCharacterPositionsGcpModel_UsingExampleFromGenSpecs()
+        {
+            assertArrayEquals(mask("11111111111111111111111"), goodCharacterPositionsGcpModel("1987654","Ad4X4bL5ttr2310c"));
+        }
+
+        @Test
+        public void goodCharacterPositionsGcpModel_GcpNotNumeric()
+        {
+            assertArrayEquals(mask("1111110111"), goodCharacterPositionsGcpModel("198765A","Ad4"));
+        }
+
+        @Test
         public void goodCharacterPositionsGcpModel_GcpTooLong()
         {
             assertArrayEquals(mask("00000000000001"), goodCharacterPositionsGcpModel("1234567890123","A"));
         }
 
         @Test
+        public void goodCharacterPositionsGcpModelChecks_UsingExampleFromGenSpecs()
+        {
+            assertArrayEquals(mask("1111111111111111111111111"), goodCharacterPositionsGcpModelChecks("1987654","Ad4X4bL5ttr2310c","2K"));
+        }
+
+        @Test
+        public void goodCharacterPositionsGcpModelChecks_GcpNotNumeric()
+        {
+            assertArrayEquals(mask("111111011111"), goodCharacterPositionsGcpModelChecks("198765A","Ad4","XX"));
+        }
+
+        @Test
         public void goodCharacterPositionsGcpModelChecks_GcpTooLong()
         {
             assertArrayEquals(mask("0000000000000111"), goodCharacterPositionsGcpModelChecks("1234567890123","A","NT"));
+        }
+
+        @Test
+        public void goodCharacterPositionsGcpModelChecks_InvalidCheckCharacter()
+        {
+            assertArrayEquals(mask("1111111111111111111111110"), goodCharacterPositionsGcpModelChecks("1987654","Ad4X4bL5ttr2310c","2x"));
+        }
+
+        @Test
+        public void verifyCheckCharacters_InvalidCharacterAtPosition6()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharacters("19876\u00a34Ad4X4bL5ttr2310c2K"));
+            assertTrue(e.getMessage().toLowerCase().contains("invalid character at position 6"));
+        }
+
+        @Test
+        public void verifyCheckCharacters_InvalidCharacterAtCheck1ReportsPosition()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharacters("1987654Ad4X4bL5ttr2310cxK"));
+            assertTrue(e.getMessage().toLowerCase().contains("invalid check character at position 24"));
+        }
+
+        @Test
+        public void verifyCheckCharacters_InvalidCharacterAtCheck2ReportsPosition()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharacters("1987654Ad4X4bL5ttr2310c2x"));
+            assertTrue(e.getMessage().toLowerCase().contains("invalid check character at position 25"));
+        }
+
+        @Test
+        public void addCheckCharacters_InvalidCharacterAtEndModelReportsPosition()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> addCheckCharacters("1987654Ad4X4bL5ttr2310\u00a3"));
+            assertTrue(e.getMessage().toLowerCase().contains("invalid character at position 23"));
+        }
+
+        @Test
+        public void verifyCheckCharacters_TooLongReportsMaximum()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharacters("123456789012345678901234XX"));
+            assertTrue(e.getMessage().toLowerCase().contains("it should be 25 characters maximum."));
+        }
+
+        @Test
+        public void checkCharacters_TooLongReportsMaximum()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> checkCharacters("123456789012345678901234"));
+            assertTrue(e.getMessage().toLowerCase().contains("it should be 23 characters maximum excluding the check character pair."));
+        }
+
+        @Test
+        public void goodCharacterPositionsGcpModel_LongestGcp()
+        {
+            assertArrayEquals(mask("1111111111111"), goodCharacterPositionsGcpModel("123456789012","A"));
+        }
+
+        @Test
+        public void goodCharacterPositionsGcpModelChecks_LongestGcp()
+        {
+            assertArrayEquals(mask("111111111111111"), goodCharacterPositionsGcpModelChecks("123456789012","A","NT"));
+        }
+
+        @Test
+        public void goodCharacterPositionsGcpModelChecks_GcpContainsZero()
+        {
+            assertArrayEquals(mask("1111111111111"), goodCharacterPositionsGcpModelChecks("1234567890","A","NT"));
+        }
+
+        @Test
+        public void checkCharactersGcpModel_ShortestModel() throws Exception
+        {
+            assertEquals("NJ", checkCharactersGcpModel("12345","A"));
+        }
+
+        @Test
+        public void verifyCheckCharactersGcpModelChecks_ShortestModel() throws Exception
+        {
+            assertTrue(verifyCheckCharactersGcpModelChecks("12345","A","NJ"));
+        }
+
+        @Test
+        public void checkCharactersGcpModel_GcpNotNumericAtStart()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> checkCharactersGcpModel("X987654","Ad4X4bL5ttr2310c"));
+            assertTrue(e.getMessage().toLowerCase().contains("gs1 company prefix must only contain digits"));
+        }
+
+        @Test
+        public void checkCharactersGcpModel_InvalidCharacterAtStartModel()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> checkCharactersGcpModel("1987654","\u00a3d4X4bL5ttr2310c"));
+            assertTrue(e.getMessage().toLowerCase().contains("invalid character at position 8"));
+        }
+
+        @Test
+        public void verifyCheckCharactersGcpModelChecks_GcpTooLongReportsMaximum()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharactersGcpModelChecks("1234567890123","Ad4X4bL5","XX"));
+            assertTrue(e.getMessage().toLowerCase().contains("it should not be more than 12 digits long."));
         }
 
 }

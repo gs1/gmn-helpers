@@ -213,10 +213,142 @@ test('checkCharactersGcpModel_NonAsciiDigitsInGCP', () => {
   expect( () => GMN.checkCharactersGcpModel("1234567\u0668","Ad4X4bL5ttr2310c")).toThrow("only contain digits");
 });
 
+test('verifyCheckCharacters_DataCharacterSubstituted', () => {
+  expect(GMN.verifyCheckCharacters("1987654Ad4X4bL5ttr2310d2K")).toBe(false);
+});
+
+test('verifyCheckCharacters_DataCharactersTransposed', () => {
+  expect(GMN.verifyCheckCharacters("1987654Ad4X4bL5ttr2301c2K")).toBe(false);
+});
+
+test('checkCharactersGcpModel_GcpTooLong', () => {
+  expect( () => GMN.checkCharactersGcpModel("1234567890123","Ad4X4bL5")).toThrow("GS1 Company Prefix is too long");
+});
+
+test('checkCharactersGcpModel_GcpNotNumeric', () => {
+  expect( () => GMN.checkCharactersGcpModel("198765A","Ad4X4bL5ttr2310c")).toThrow("GS1 Company Prefix must only contain digits");
+});
+
+test('checkCharactersGcpModel_ModelEmpty', () => {
+  expect( () => GMN.checkCharactersGcpModel("1987654","")).toThrow("model reference must contain at least one character");
+});
+
+test('checkCharactersGcpModel_InvalidCharacterAtEndModel', () => {
+  expect( () => GMN.checkCharactersGcpModel("1987654","Ad4X4bL5ttr2310\u00a3")).toThrow("Invalid character");
+});
+
+test('checkCharactersGcpModel_TooLong', () => {
+  expect( () => GMN.checkCharactersGcpModel("12345","678901234567890123X")).toThrow("input is too long");
+});
+
+test('addCheckCharactersGcpModel_GcpTooLong', () => {
+  expect( () => GMN.addCheckCharactersGcpModel("1234567890123","Ad4X4bL5")).toThrow("GS1 Company Prefix is too long");
+});
+
+test('addCheckCharactersGcpModel_InvalidCharacterAtEndModel', () => {
+  expect( () => GMN.addCheckCharactersGcpModel("1987654","Ad4X4bL5ttr2310\u00a3")).toThrow("Invalid character");
+});
+
+test('goodCharacterPositions_UsingExampleFromGenSpecs', () => {
+  expect(GMN.goodCharacterPositions("1987654Ad4X4bL5ttr2310c2K",true)).toEqual(mask("1111111111111111111111111"));
+});
+
+test('goodCharacterPositions_PartialUsingExampleFromGenSpecs', () => {
+  expect(GMN.goodCharacterPositions("1987654Ad4X4bL5ttr2310c",false)).toEqual(mask("11111111111111111111111"));
+});
+
+test('goodCharacterPositions_InvalidCharacters', () => {
+  expect(GMN.goodCharacterPositions("1987X54Ad4X4bL5ttr2310\u00a32x",true)).toEqual(mask("1111011111111111111111010"));
+});
+
+test('goodCharacterPositions_PartialHasNoCheckCharacters', () => {
+  expect(GMN.goodCharacterPositions("12345Ax",false)).toEqual(mask("1111111"));
+});
+
+test('goodCharacterPositions_CompleteHasCheckCharacters', () => {
+  expect(GMN.goodCharacterPositions("12345Ax",true)).toEqual(mask("1111110"));
+});
+
+test('goodCharacterPositionsGcpModel_UsingExampleFromGenSpecs', () => {
+  expect(GMN.goodCharacterPositionsGcpModel("1987654","Ad4X4bL5ttr2310c")).toEqual(mask("11111111111111111111111"));
+});
+
+test('goodCharacterPositionsGcpModel_GcpNotNumeric', () => {
+  expect(GMN.goodCharacterPositionsGcpModel("198765A","Ad4")).toEqual(mask("1111110111"));
+});
+
 test('goodCharacterPositionsGcpModel_GcpTooLong', () => {
   expect(GMN.goodCharacterPositionsGcpModel("1234567890123","A")).toEqual(mask("00000000000001"));
 });
 
+test('goodCharacterPositionsGcpModelChecks_UsingExampleFromGenSpecs', () => {
+  expect(GMN.goodCharacterPositionsGcpModelChecks("1987654","Ad4X4bL5ttr2310c","2K")).toEqual(mask("1111111111111111111111111"));
+});
+
+test('goodCharacterPositionsGcpModelChecks_GcpNotNumeric', () => {
+  expect(GMN.goodCharacterPositionsGcpModelChecks("198765A","Ad4","XX")).toEqual(mask("111111011111"));
+});
+
 test('goodCharacterPositionsGcpModelChecks_GcpTooLong', () => {
   expect(GMN.goodCharacterPositionsGcpModelChecks("1234567890123","A","NT")).toEqual(mask("0000000000000111"));
+});
+
+test('goodCharacterPositionsGcpModelChecks_InvalidCheckCharacter', () => {
+  expect(GMN.goodCharacterPositionsGcpModelChecks("1987654","Ad4X4bL5ttr2310c","2x")).toEqual(mask("1111111111111111111111110"));
+});
+
+test('verifyCheckCharacters_InvalidCharacterAtPosition6', () => {
+  expect( () => GMN.verifyCheckCharacters("19876\u00a34Ad4X4bL5ttr2310c2K")).toThrow("Invalid character at position 6");
+});
+
+test('verifyCheckCharacters_InvalidCharacterAtCheck1ReportsPosition', () => {
+  expect( () => GMN.verifyCheckCharacters("1987654Ad4X4bL5ttr2310cxK")).toThrow("Invalid check character at position 24");
+});
+
+test('verifyCheckCharacters_InvalidCharacterAtCheck2ReportsPosition', () => {
+  expect( () => GMN.verifyCheckCharacters("1987654Ad4X4bL5ttr2310c2x")).toThrow("Invalid check character at position 25");
+});
+
+test('addCheckCharacters_InvalidCharacterAtEndModelReportsPosition', () => {
+  expect( () => GMN.addCheckCharacters("1987654Ad4X4bL5ttr2310\u00a3")).toThrow("Invalid character at position 23");
+});
+
+test('verifyCheckCharacters_TooLongReportsMaximum', () => {
+  expect( () => GMN.verifyCheckCharacters("123456789012345678901234XX")).toThrow("It should be 25 characters maximum.");
+});
+
+test('checkCharacters_TooLongReportsMaximum', () => {
+  expect( () => GMN.checkCharacters("123456789012345678901234")).toThrow("It should be 23 characters maximum excluding the check character pair.");
+});
+
+test('goodCharacterPositionsGcpModel_LongestGcp', () => {
+  expect(GMN.goodCharacterPositionsGcpModel("123456789012","A")).toEqual(mask("1111111111111"));
+});
+
+test('goodCharacterPositionsGcpModelChecks_LongestGcp', () => {
+  expect(GMN.goodCharacterPositionsGcpModelChecks("123456789012","A","NT")).toEqual(mask("111111111111111"));
+});
+
+test('goodCharacterPositionsGcpModelChecks_GcpContainsZero', () => {
+  expect(GMN.goodCharacterPositionsGcpModelChecks("1234567890","A","NT")).toEqual(mask("1111111111111"));
+});
+
+test('checkCharactersGcpModel_ShortestModel', () => {
+  expect(GMN.checkCharactersGcpModel("12345","A")).toBe("NJ");
+});
+
+test('verifyCheckCharactersGcpModelChecks_ShortestModel', () => {
+  expect(GMN.verifyCheckCharactersGcpModelChecks("12345","A","NJ")).toBe(true);
+});
+
+test('checkCharactersGcpModel_GcpNotNumericAtStart', () => {
+  expect( () => GMN.checkCharactersGcpModel("X987654","Ad4X4bL5ttr2310c")).toThrow("GS1 Company Prefix must only contain digits");
+});
+
+test('checkCharactersGcpModel_InvalidCharacterAtStartModel', () => {
+  expect( () => GMN.checkCharactersGcpModel("1987654","\u00a3d4X4bL5ttr2310c")).toThrow("Invalid character at position 8");
+});
+
+test('verifyCheckCharactersGcpModelChecks_GcpTooLongReportsMaximum', () => {
+  expect( () => GMN.verifyCheckCharactersGcpModelChecks("1234567890123","Ad4X4bL5","XX")).toThrow("It should not be more than 12 digits long.");
 });
