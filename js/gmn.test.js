@@ -14,6 +14,9 @@
 
 var GMN = require('./gmn');
 
+// Expand a string of 0s and 1s into the boolean array returned by goodCharacterPositions
+var mask = function (m) { return m.split('').map(function (c) { return c === '1'; }); };
+
 test('verifyCheckCharacters_UsingExampleFromGenSpecs', () => {
   expect(GMN.verifyCheckCharacters("1987654Ad4X4bL5ttr2310c2K")).toBe(true);
 });
@@ -208,4 +211,12 @@ test('verifyCheckCharacters_NonAsciiDigitsInGCP', () => {
 
 test('checkCharactersGcpModel_NonAsciiDigitsInGCP', () => {
   expect( () => GMN.checkCharactersGcpModel("1234567\u0668","Ad4X4bL5ttr2310c")).toThrow("only contain digits");
+});
+
+test('goodCharacterPositionsGcpModel_GcpTooLong', () => {
+  expect(GMN.goodCharacterPositionsGcpModel("1234567890123","A")).toEqual(mask("00000000000001"));
+});
+
+test('goodCharacterPositionsGcpModelChecks_GcpTooLong', () => {
+  expect(GMN.goodCharacterPositionsGcpModelChecks("1234567890123","A","NT")).toEqual(mask("0000000000000111"));
 });
