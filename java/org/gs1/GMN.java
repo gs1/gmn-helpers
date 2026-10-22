@@ -8,7 +8,7 @@ import java.util.HashMap;
  * Helper class that is both a demonstration and usable implementation of a
  * check character generator and verifier for a GS1 Global Model Number.
  *
- * @author Copyright (c) 2019-2021 GS1 AISBL.
+ * @author Copyright (c) 2019-2026 GS1 AISBL.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -201,7 +201,7 @@ public final class GMN {
 
             // GMN begins with a GS1 Company Prefix which is at least five characters
             if (i < 5)
-                out[i] = Character.isDigit(gmn.charAt(i));
+                out[i] = _isDigit(gmn.charAt(i));
             else if (!complete || i < gmn.length() - 2)
                 out[i] = cset82value.containsKey(gmn.charAt(i));
             else  // For a complete GMN final two positions are check character pair
@@ -225,7 +225,7 @@ public final class GMN {
 
         // The GS1 Company Prefix is numeric only
         for (int i = 0; i < gcp.length(); i++)
-            out[i] = Character.isDigit(gcp.charAt(i));
+            out[i] = _isDigit(gcp.charAt(i));
 
         return out;
     };
@@ -243,10 +243,16 @@ public final class GMN {
 
         // The GS1 Company Prefix is numeric only
         for (int i = 0; i < gcp.length(); i++)
-            out[i] = Character.isDigit(gcp.charAt(i));
+            out[i] = _isDigit(gcp.charAt(i));
 
         return out;
     };
+
+    // Character.isDigit accepts any Unicode digit, but only ASCII digits are in cset82
+    private static boolean _isDigit(char c)
+    {
+        return c >= '0' && c <= '9';
+    }
 
     // Perform some local consistency checks on a partial or complete GMN string
     private static void _formatChecks(String input, boolean complete)

@@ -308,4 +308,25 @@ public class GMNTests
             assertTrue(verifyCheckCharactersGcpModelChecks("123456789012","34567890123","NT"));
         }
 
+        @Test
+        public void checkCharacters_NonAsciiDigitsInGCP()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> checkCharacters("\u0661\u0662\u0663\u0664\u0665Ad4X4bL5ttr2310c"));
+            assertTrue(e.getMessage().toLowerCase().contains("must be digits"));
+        }
+
+        @Test
+        public void verifyCheckCharacters_NonAsciiDigitsInGCP()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharacters("\u0661\u0662\u0663\u0664\u0665Ad4X4bL5ttr2310c2K"));
+            assertTrue(e.getMessage().toLowerCase().contains("must be digits"));
+        }
+
+        @Test
+        public void checkCharactersGcpModel_NonAsciiDigitsInGCP()
+        {
+            GS1Exception e = assertThrows(GS1Exception.class, () -> checkCharactersGcpModel("1234567\u0668","Ad4X4bL5ttr2310c"));
+            assertTrue(e.getMessage().toLowerCase().contains("only contain digits"));
+        }
+
 }
