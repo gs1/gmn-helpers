@@ -53,56 +53,56 @@ namespace GMNTests
         [Fact]
         public void VerifyCheckCharacters_First5NotNumericAtStart()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharacters("X987654Ad4X4bL5ttr2310c2K"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharacters("X987654Ad4X4bL5ttr2310c2K"));
             Assert.Contains("must be digits", e.Message.ToLower());
         }
 
         [Fact]
         public void VerifyCheckCharacters_First5NotNumericAtEnd()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharacters("1987X54Ad4X4bL5ttr2310c2K"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharacters("1987X54Ad4X4bL5ttr2310c2K"));
             Assert.Contains("must be digits", e.Message.ToLower());
         }
 
         [Fact]
         public void VerifyCheckCharacters_InvalidCharacterNearStart()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharacters("198765£Ad4X4bL5ttr2310c2K"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharacters("198765\u00a3Ad4X4bL5ttr2310c2K"));
             Assert.Contains("invalid character", e.Message.ToLower());
         }
 
         [Fact]
         public void VerifyCheckCharacters_InvalidCharacterAtEndModel()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharacters("1987654Ad4X4bL5ttr2310£2K"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharacters("1987654Ad4X4bL5ttr2310\u00a32K"));
             Assert.Contains("invalid character", e.Message.ToLower());
         }
 
         [Fact]
         public void AddCheckCharacters_InvalidCharacterAtEndModel()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => AddCheckCharacters("1987654Ad4X4bL5ttr2310£"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => AddCheckCharacters("1987654Ad4X4bL5ttr2310\u00a3"));
             Assert.Contains("invalid character", e.Message.ToLower());
         }
 
         [Fact]
         public void VerifyCheckCharacters_InvalidCharacterAtCheck1()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharacters("1987654Ad4X4bL5ttr2310cxK"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharacters("1987654Ad4X4bL5ttr2310cxK"));
             Assert.Contains("invalid check character", e.Message.ToLower());
         }
 
         [Fact]
         public void VerifyCheckCharacters_InvalidCharacterAtCheck2()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharacters("1987654Ad4X4bL5ttr2310c2x"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharacters("1987654Ad4X4bL5ttr2310c2x"));
             Assert.Contains("invalid check character", e.Message.ToLower());
         }
 
         [Fact]
         public void VerifyCheckCharacters_TooShort()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharacters("12345XX"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharacters("12345XX"));
             Assert.Contains("too short", e.Message.ToLower());
         }
 
@@ -115,7 +115,7 @@ namespace GMNTests
         [Fact]
         public void VerifyCheckCharacters_TooLong()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharacters("123456789012345678901234XX"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharacters("123456789012345678901234XX"));
             Assert.Contains("too long", e.Message.ToLower());
         }
 
@@ -128,7 +128,7 @@ namespace GMNTests
         [Fact]
         public void CheckCharacters_TooShort()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => CheckCharacters("12345"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => CheckCharacters("12345"));
             Assert.Contains("too short", e.Message.ToLower());
         }
 
@@ -141,7 +141,7 @@ namespace GMNTests
         [Fact]
         public void CheckCharacters_TooLong()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => CheckCharacters("123456789012345678901234"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => CheckCharacters("123456789012345678901234"));
             Assert.Contains("too long", e.Message.ToLower());
         }
 
@@ -230,21 +230,21 @@ namespace GMNTests
         [Fact]
         public void VerifyCheckCharactersGcpModelChecks_CheckTooShort()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharactersGcpModelChecks("1987654","Ad4X4bL5ttr2310c","3"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharactersGcpModelChecks("1987654","Ad4X4bL5ttr2310c","3"));
             Assert.Contains("check must be 2 characters long", e.Message.ToLower());
         }
 
         [Fact]
         public void VerifyCheckCharactersGcpModelChecks_CheckTooLong()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharactersGcpModelChecks("1987654","Ad4X4bL5ttr2310c","2KX"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharactersGcpModelChecks("1987654","Ad4X4bL5ttr2310c","2KX"));
             Assert.Contains("check must be 2 characters long", e.Message.ToLower());
         }
 
         [Fact]
         public void VerifyCheckCharactersGcpModelChecks_GcpTooShort()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharactersGcpModelChecks("1234","Ad4X4bL5ttr2310c","XX"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharactersGcpModelChecks("1234","Ad4X4bL5ttr2310c","XX"));
             Assert.Contains("gs1 company prefix is too short", e.Message.ToLower());
         }
 
@@ -257,7 +257,7 @@ namespace GMNTests
         [Fact]
         public void VerifyCheckCharactersGcpModelChecks_GcpTooLong()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharactersGcpModelChecks("1234567890123","Ad4X4bL5","XX"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharactersGcpModelChecks("1234567890123","Ad4X4bL5","XX"));
             Assert.Contains("gs1 company prefix is too long", e.Message.ToLower());
         }
 
@@ -270,21 +270,21 @@ namespace GMNTests
         [Fact]
         public void VerifyCheckCharactersGcpModelChecks_GcpNotNumeric()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharactersGcpModelChecks("198765A","Ad4X4bL5ttr2310c","XX"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharactersGcpModelChecks("198765A","Ad4X4bL5ttr2310c","XX"));
             Assert.Contains("gs1 company prefix must only contain digits", e.Message.ToLower());
         }
 
         [Fact]
         public void VerifyCheckCharactersGcpModelChecks_ModelEmpty()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharactersGcpModelChecks("1987654","","3T"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharactersGcpModelChecks("1987654","","3T"));
             Assert.Contains("model reference must contain at least one character", e.Message.ToLower());
         }
 
         [Fact]
         public void VerifyCheckCharactersGcpModelChecks_OversizeShortestGCP()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharactersGcpModelChecks("12345","6789012345678901234","XX"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharactersGcpModelChecks("12345","6789012345678901234","XX"));
             Assert.Contains("input is too long", e.Message.ToLower());
         }
 
@@ -297,7 +297,7 @@ namespace GMNTests
         [Fact]
         public void VerifyCheckCharactersGcpModelChecks_OversizeLongestGCP()
         {
-            Exception e = Assert.ThrowsAny<Exception>(() => VerifyCheckCharactersGcpModelChecks("123456789012","345678901234","XX"));
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharactersGcpModelChecks("123456789012","345678901234","XX"));
             Assert.Contains("input is too long", e.Message.ToLower());
         }
 

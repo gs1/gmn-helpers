@@ -50,52 +50,60 @@ public class GMNTests
             assertFalse(verifyCheckCharacters("1987654Ad4X4bL5ttr2310c2X"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharacters_First5NotNumericiAtStart() throws Exception
+        @Test
+        public void verifyCheckCharacters_First5NotNumericAtStart()
         {
-            verifyCheckCharacters("X987654Ad4X4bL5ttr2310c2K");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharacters("X987654Ad4X4bL5ttr2310c2K"));
+            assertTrue(e.getMessage().toLowerCase().contains("must be digits"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharacters_First5NotNumericAtEnd() throws Exception
+        @Test
+        public void verifyCheckCharacters_First5NotNumericAtEnd()
         {
-            verifyCheckCharacters("1987X54Ad4X4bL5ttr2310c2K");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharacters("1987X54Ad4X4bL5ttr2310c2K"));
+            assertTrue(e.getMessage().toLowerCase().contains("must be digits"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharacters_InvalidCharacterNearStart() throws Exception
+        @Test
+        public void verifyCheckCharacters_InvalidCharacterNearStart()
         {
-            verifyCheckCharacters("19876£4Ad4X4bL5ttr2310c2K");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharacters("198765\u00a3Ad4X4bL5ttr2310c2K"));
+            assertTrue(e.getMessage().toLowerCase().contains("invalid character"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharacters_InvalidCharacterAtEndModel() throws Exception
+        @Test
+        public void verifyCheckCharacters_InvalidCharacterAtEndModel()
         {
-            verifyCheckCharacters("1987654Ad4X4bL5ttr2310£2K");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharacters("1987654Ad4X4bL5ttr2310\u00a32K"));
+            assertTrue(e.getMessage().toLowerCase().contains("invalid character"));
         }
 
-        @Test(expected = Exception.class)
-        public void addCheckCharacters_InvalidCharacterAtEndModel() throws Exception
+        @Test
+        public void addCheckCharacters_InvalidCharacterAtEndModel()
         {
-            addCheckCharacters("1987654Ad4X4bL5ttr23102K£");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> addCheckCharacters("1987654Ad4X4bL5ttr2310\u00a3"));
+            assertTrue(e.getMessage().toLowerCase().contains("invalid character"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharacters_InvalidCharacterAtCheck1() throws Exception
+        @Test
+        public void verifyCheckCharacters_InvalidCharacterAtCheck1()
         {
-            verifyCheckCharacters("1987654Ad4X4bL5ttr2310£cxK");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharacters("1987654Ad4X4bL5ttr2310cxK"));
+            assertTrue(e.getMessage().toLowerCase().contains("invalid check character"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharacters_InvalidCharacterAtCheck2() throws Exception
+        @Test
+        public void verifyCheckCharacters_InvalidCharacterAtCheck2()
         {
-            verifyCheckCharacters("1987654Ad4X4bL5ttr2310c2x");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharacters("1987654Ad4X4bL5ttr2310c2x"));
+            assertTrue(e.getMessage().toLowerCase().contains("invalid check character"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharacters_TooShort() throws Exception
+        @Test
+        public void verifyCheckCharacters_TooShort()
         {
-            verifyCheckCharacters("12345XX");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharacters("12345XX"));
+            assertTrue(e.getMessage().toLowerCase().contains("too short"));
         }
 
         @Test
@@ -104,10 +112,11 @@ public class GMNTests
             assertTrue(verifyCheckCharacters("12345ANJ"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharacters_TooLong() throws Exception
+        @Test
+        public void verifyCheckCharacters_TooLong()
         {
-            verifyCheckCharacters("123456789012345678901234XX");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharacters("123456789012345678901234XX"));
+            assertTrue(e.getMessage().toLowerCase().contains("too long"));
         }
 
 
@@ -117,10 +126,11 @@ public class GMNTests
             assertTrue(verifyCheckCharacters("12345678901234567890123NT"));
         }
 
-        @Test(expected = Exception.class)
-        public void checkCharacters_TooShort() throws Exception
+        @Test
+        public void checkCharacters_TooShort()
         {
-            checkCharacters("12345");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> checkCharacters("12345"));
+            assertTrue(e.getMessage().toLowerCase().contains("too short"));
         }
 
         @Test
@@ -129,10 +139,11 @@ public class GMNTests
             assertEquals("NJ",checkCharacters("12345A"));
         }
 
-        @Test(expected = Exception.class)
-        public void checkCharacters_TooLong() throws Exception
+        @Test
+        public void checkCharacters_TooLong()
         {
-            checkCharacters("123456789012345678901234");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> checkCharacters("123456789012345678901234"));
+            assertTrue(e.getMessage().toLowerCase().contains("too long"));
         }
 
         @Test
@@ -217,22 +228,25 @@ public class GMNTests
             assertFalse(verifyCheckCharactersGcpModelChecks("1987654","Ad4X4bL5ttr2310c","2X"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharactersGcpModelChecks_CheckTooShort() throws Exception
+        @Test
+        public void verifyCheckCharactersGcpModelChecks_CheckTooShort()
         {
-            verifyCheckCharactersGcpModelChecks("1987654","Ad4X4bL5ttr2310c","3");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharactersGcpModelChecks("1987654","Ad4X4bL5ttr2310c","3"));
+            assertTrue(e.getMessage().toLowerCase().contains("check must be 2 characters long"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharactersGcpModelChecks_CheckTooLong() throws Exception
+        @Test
+        public void verifyCheckCharactersGcpModelChecks_CheckTooLong()
         {
-            verifyCheckCharactersGcpModelChecks("1987654","Ad4X4bL5ttr2310c","2KX");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharactersGcpModelChecks("1987654","Ad4X4bL5ttr2310c","2KX"));
+            assertTrue(e.getMessage().toLowerCase().contains("check must be 2 characters long"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharactersGcpModelChecks_GcpTooShort() throws Exception
+        @Test
+        public void verifyCheckCharactersGcpModelChecks_GcpTooShort()
         {
-            verifyCheckCharactersGcpModelChecks("1234","Ad4X4bL5ttr2310c","XX");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharactersGcpModelChecks("1234","Ad4X4bL5ttr2310c","XX"));
+            assertTrue(e.getMessage().toLowerCase().contains("gs1 company prefix is too short"));
         }
 
         @Test
@@ -241,10 +255,11 @@ public class GMNTests
             assertTrue(verifyCheckCharactersGcpModelChecks("12345","Ad4X4bL5ttr2310c","66"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharactersGcpModelChecks_GcpTooLong() throws Exception
+        @Test
+        public void verifyCheckCharactersGcpModelChecks_GcpTooLong()
         {
-            verifyCheckCharactersGcpModelChecks("1234567890123","Ad4X4bL5","XX");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharactersGcpModelChecks("1234567890123","Ad4X4bL5","XX"));
+            assertTrue(e.getMessage().toLowerCase().contains("gs1 company prefix is too long"));
         }
 
         @Test
@@ -253,22 +268,25 @@ public class GMNTests
             assertTrue(verifyCheckCharactersGcpModelChecks("123456789012","Ad4X4bL5ttr","3R"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharactersGcpModelChecks_GcpNotNumeric() throws Exception
+        @Test
+        public void verifyCheckCharactersGcpModelChecks_GcpNotNumeric()
         {
-            verifyCheckCharactersGcpModelChecks("198765A","Ad4X4bL5ttr2310c","XX");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharactersGcpModelChecks("198765A","Ad4X4bL5ttr2310c","XX"));
+            assertTrue(e.getMessage().toLowerCase().contains("gs1 company prefix must only contain digits"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharactersGcpModelChecks_ModelEmpty() throws Exception
+        @Test
+        public void verifyCheckCharactersGcpModelChecks_ModelEmpty()
         {
-            verifyCheckCharactersGcpModelChecks("1987654","","3T");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharactersGcpModelChecks("1987654","","3T"));
+            assertTrue(e.getMessage().toLowerCase().contains("model reference must contain at least one character"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharactersGcpModelChecks_OversizeShortestGCP() throws Exception
+        @Test
+        public void verifyCheckCharactersGcpModelChecks_OversizeShortestGCP()
         {
-            verifyCheckCharactersGcpModelChecks("12345","6789012345678901234","XX");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharactersGcpModelChecks("12345","6789012345678901234","XX"));
+            assertTrue(e.getMessage().toLowerCase().contains("input is too long"));
         }
 
         @Test
@@ -277,10 +295,11 @@ public class GMNTests
             assertTrue(verifyCheckCharactersGcpModelChecks("12345","678901234567890123","NT"));
         }
 
-        @Test(expected = Exception.class)
-        public void verifyCheckCharactersGcpModelChecks_OversizeLongestGCP() throws Exception
+        @Test
+        public void verifyCheckCharactersGcpModelChecks_OversizeLongestGCP()
         {
-            verifyCheckCharactersGcpModelChecks("123456789012","345678901234","XX");
+            GS1Exception e = assertThrows(GS1Exception.class, () -> verifyCheckCharactersGcpModelChecks("123456789012","345678901234","XX"));
+            assertTrue(e.getMessage().toLowerCase().contains("input is too long"));
         }
 
         @Test

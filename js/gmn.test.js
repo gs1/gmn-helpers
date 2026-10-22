@@ -43,15 +43,15 @@ test('verifyCheckCharacters_First5NotNumericAtEnd', () => {
 });
 
 test('verifyCheckCharacters_InvalidCharacterNearStart', () => {
-  expect( () => GMN.verifyCheckCharacters("198765£Ad4X4bL5ttr2310c2K")).toThrow("Invalid character");
+  expect( () => GMN.verifyCheckCharacters("198765\u00a3Ad4X4bL5ttr2310c2K")).toThrow("Invalid character");
 });
 
 test('verifyCheckCharacters_InvalidCharacterAtEndModel', () => {
-  expect( () => GMN.verifyCheckCharacters("1987654Ad4X4bL5ttr2310£2K")).toThrow("Invalid character");
+  expect( () => GMN.verifyCheckCharacters("1987654Ad4X4bL5ttr2310\u00a32K")).toThrow("Invalid character");
 });
 
 test('addCheckCharacters_InvalidCharacterAtEndModel', () => {
-  expect( () => GMN.addCheckCharacters("1987654Ad4X4bL5ttr2310£")).toThrow("Invalid character");
+  expect( () => GMN.addCheckCharacters("1987654Ad4X4bL5ttr2310\u00a3")).toThrow("Invalid character");
 });
 
 test('verifyCheckCharacters_InvalidCharacterAtCheck1', () => {
