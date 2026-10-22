@@ -227,6 +227,11 @@ public final class GMN {
         for (int i = 0; i < gcp.length(); i++)
             out[i] = _isDigit(gcp.charAt(i));
 
+        // Define all characters of the GS1 Company Prefix to be bad if the length is incorrect
+        if (gcp.length() < 5 || gcp.length() > 12)
+            for (int i = 0; i < gcp.length(); i++)
+                out[i] = false;
+
         return out;
     };
 
@@ -244,6 +249,11 @@ public final class GMN {
         // The GS1 Company Prefix is numeric only
         for (int i = 0; i < gcp.length(); i++)
             out[i] = _isDigit(gcp.charAt(i));
+
+        // Define all characters of the GS1 Company Prefix to be bad if the length is incorrect
+        if (gcp.length() < 5 || gcp.length() > 12)
+            for (int i = 0; i < gcp.length(); i++)
+                out[i] = false;
 
         return out;
     };

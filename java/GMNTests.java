@@ -20,6 +20,15 @@ import static org.gs1.GMN.*;
 public class GMNTests
 {
 
+        // Expand a string of 0s and 1s into the boolean array returned by goodCharacterPositions
+        private static boolean[] mask(String m)
+        {
+            boolean[] out = new boolean[m.length()];
+            for (int i = 0; i < m.length(); i++)
+                out[i] = m.charAt(i) == '1';
+            return out;
+        }
+
         @Test
         public void verifyCheckCharacters_UsingExampleFromGenSpecs() throws Exception
         {
@@ -327,6 +336,18 @@ public class GMNTests
         {
             GS1Exception e = assertThrows(GS1Exception.class, () -> checkCharactersGcpModel("1234567\u0668","Ad4X4bL5ttr2310c"));
             assertTrue(e.getMessage().toLowerCase().contains("only contain digits"));
+        }
+
+        @Test
+        public void goodCharacterPositionsGcpModel_GcpTooLong()
+        {
+            assertArrayEquals(mask("00000000000001"), goodCharacterPositionsGcpModel("1234567890123","A"));
+        }
+
+        @Test
+        public void goodCharacterPositionsGcpModelChecks_GcpTooLong()
+        {
+            assertArrayEquals(mask("0000000000000111"), goodCharacterPositionsGcpModelChecks("1234567890123","A","NT"));
         }
 
 }
