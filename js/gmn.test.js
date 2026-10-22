@@ -197,3 +197,15 @@ test('verifyCheckCharactersGcpModelChecks_OversizeLongestGCP', () => {
 test('verifyCheckCharactersGcpModelChecks_NotOversizeLongestGCP', () => {
   expect(GMN.verifyCheckCharactersGcpModelChecks("123456789012","34567890123","NT")).toBe(true);
 });
+
+test('checkCharacters_NonAsciiDigitsInGCP', () => {
+  expect( () => GMN.checkCharacters("\u0661\u0662\u0663\u0664\u0665Ad4X4bL5ttr2310c")).toThrow("must be digits");
+});
+
+test('verifyCheckCharacters_NonAsciiDigitsInGCP', () => {
+  expect( () => GMN.verifyCheckCharacters("\u0661\u0662\u0663\u0664\u0665Ad4X4bL5ttr2310c2K")).toThrow("must be digits");
+});
+
+test('checkCharactersGcpModel_NonAsciiDigitsInGCP', () => {
+  expect( () => GMN.checkCharactersGcpModel("1234567\u0668","Ad4X4bL5ttr2310c")).toThrow("only contain digits");
+});

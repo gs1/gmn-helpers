@@ -2,7 +2,7 @@
  * Helper module that is both a demonstration and usable implementation of a
  * check character pair generator and verifier for a GS1 Global Model Number.
  *
- * @author Copyright (c) 2019-2021 GS1 AISBL.
+ * @author Copyright (c) 2019-2026 GS1 AISBL.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
