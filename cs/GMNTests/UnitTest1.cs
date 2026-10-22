@@ -307,5 +307,26 @@ namespace GMNTests
             Assert.True(VerifyCheckCharactersGcpModelChecks("123456789012","34567890123","NT"));
         }
 
+        [Fact]
+        public void CheckCharacters_NonAsciiDigitsInGCP()
+        {
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => CheckCharacters("\u0661\u0662\u0663\u0664\u0665Ad4X4bL5ttr2310c"));
+            Assert.Contains("must be digits", e.Message.ToLower());
+        }
+
+        [Fact]
+        public void VerifyCheckCharacters_NonAsciiDigitsInGCP()
+        {
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => VerifyCheckCharacters("\u0661\u0662\u0663\u0664\u0665Ad4X4bL5ttr2310c2K"));
+            Assert.Contains("must be digits", e.Message.ToLower());
+        }
+
+        [Fact]
+        public void CheckCharactersGcpModel_NonAsciiDigitsInGCP()
+        {
+            Exception e = Assert.Throws<GS1.GS1Exception>(() => CheckCharactersGcpModel("1234567\u0668","Ad4X4bL5ttr2310c"));
+            Assert.Contains("only contain digits", e.Message.ToLower());
+        }
+
     }
 }

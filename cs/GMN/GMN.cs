@@ -10,7 +10,7 @@ namespace GS1
     /// check character pair generator and verifier for a GS1 Global Model
     /// Number.
     ///
-    /// Copyright (c) 2019-2021 GS1 AISBL.
+    /// Copyright (c) 2019-2026 GS1 AISBL.
     ///
     /// Licensed under the Apache License, Version 2.0 (the "License");
     /// you may not use this file except in compliance with the License.
@@ -186,7 +186,7 @@ namespace GS1
 
                 // GMN begins with a GS1 Company Prefix which is at least five characters
                 if (i < 5)
-                    ret[i] = Char.IsDigit(gmn[i]);
+                    ret[i] = _IsDigit(gmn[i]);
                 else if (!complete || i < gmn.Length - 2)
                     ret[i] = cset82val.ContainsKey(gmn[i]);
                 else  // For a complete GMN final two positions are check character pair
@@ -209,7 +209,7 @@ namespace GS1
 
             // The GS1 Company Prefix is numeric only
             for (int i = 0; i < gcp.Length; i++)
-                ret[i] = Char.IsDigit(gcp[i]);
+                ret[i] = _IsDigit(gcp[i]);
 
             return ret;
         }
@@ -226,9 +226,15 @@ namespace GS1
 
             // The GS1 Company Prefix is numeric only
             for (int i = 0; i < gcp.Length; i++)
-                ret[i] = Char.IsDigit(gcp[i]);
+                ret[i] = _IsDigit(gcp[i]);
 
             return ret;
+        }
+
+        // Char.IsDigit accepts any Unicode digit, but only ASCII digits are in cset82
+        private static bool _IsDigit(char c)
+        {
+            return c >= '0' && c <= '9';
         }
 
         // Perform some local consistency checks on a partial or complete GMN string
