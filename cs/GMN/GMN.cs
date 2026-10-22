@@ -211,6 +211,11 @@ namespace GS1
             for (int i = 0; i < gcp.Length; i++)
                 ret[i] = _IsDigit(gcp[i]);
 
+            // Define all characters of the GS1 Company Prefix to be bad if the length is incorrect
+            if (gcp.Length < 5 || gcp.Length > 12)
+                for (int i = 0; i < gcp.Length; i++)
+                    ret[i] = false;
+
             return ret;
         }
 
@@ -227,6 +232,11 @@ namespace GS1
             // The GS1 Company Prefix is numeric only
             for (int i = 0; i < gcp.Length; i++)
                 ret[i] = _IsDigit(gcp[i]);
+
+            // Define all characters of the GS1 Company Prefix to be bad if the length is incorrect
+            if (gcp.Length < 5 || gcp.Length > 12)
+                for (int i = 0; i < gcp.Length; i++)
+                    ret[i] = false;
 
             return ret;
         }

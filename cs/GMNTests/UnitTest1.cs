@@ -20,6 +20,15 @@ namespace GMNTests
 {
     public class UnitTest1
     {
+
+        // Expand a string of 0s and 1s into the boolean array returned by GoodCharacterPositions
+        private static bool[] Mask(string m)
+        {
+            bool[] ret = new bool[m.Length];
+            for (int i = 0; i < m.Length; i++)
+                ret[i] = m[i] == '1';
+            return ret;
+        }
         [Fact]
         public void VerifyCheckCharacters_UsingExampleFromGenSpecs()
         {
@@ -326,6 +335,18 @@ namespace GMNTests
         {
             Exception e = Assert.Throws<GS1.GS1Exception>(() => CheckCharactersGcpModel("1234567\u0668","Ad4X4bL5ttr2310c"));
             Assert.Contains("only contain digits", e.Message.ToLower());
+        }
+
+        [Fact]
+        public void GoodCharacterPositionsGcpModel_GcpTooLong()
+        {
+            Assert.Equal(Mask("00000000000001"), GoodCharacterPositionsGcpModel("1234567890123","A"));
+        }
+
+        [Fact]
+        public void GoodCharacterPositionsGcpModelChecks_GcpTooLong()
+        {
+            Assert.Equal(Mask("0000000000000111"), GoodCharacterPositionsGcpModelChecks("1234567890123","A","NT"));
         }
 
     }
